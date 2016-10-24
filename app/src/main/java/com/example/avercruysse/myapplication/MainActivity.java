@@ -2,6 +2,7 @@ package com.example.avercruysse.myapplication;
 
 import android.app.Activity;
 import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -38,6 +39,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        Notification notification = (new Notification.Builder( getApplicationContext() ))
+                .setContentTitle( "Nouvelle article" )
+                .setContentText( "HEY" )
+                .setSmallIcon( R.mipmap.ic_launcher )
+                .build();
+        NotificationManager notificationManager = (NotificationManager)getSystemService( NOTIFICATION_SERVICE );
+        notificationManager.notify( 1, notification );
+
         // final View controlsView =
         // findViewById(R.id.fullscreen_content_controls);
         CookieManager cookieManager = CookieManager.getInstance();
@@ -63,7 +72,6 @@ public class MainActivity extends Activity {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             String host = Uri.parse(url).getHost();
-            Log.d("shouldOverrideUrlLoading", url+" host: "+host);
             if (host.equals(target_url_prefix) || host.equals(target_url) || host.equals("http://disq.us/") || host.equals("http://www.disq.us/") || host.equals("www.disq.us") || host.equals("disq.us"))
             {
                 // This is my web site, so do not override; let my WebView load
