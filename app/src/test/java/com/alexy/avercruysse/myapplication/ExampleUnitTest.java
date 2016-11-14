@@ -1,4 +1,4 @@
-package com.example.avercruysse.myapplication;
+package com.alexy.avercruysse.myapplication;
 
 import org.junit.Test;
 

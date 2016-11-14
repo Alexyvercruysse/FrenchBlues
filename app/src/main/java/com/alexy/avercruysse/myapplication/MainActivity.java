@@ -1,14 +1,19 @@
-package com.example.avercruysse.myapplication;
+package com.alexy.avercruysse.myapplication;
 
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -21,6 +26,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.Toast;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity {
 
@@ -39,13 +50,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        Notification notification = (new Notification.Builder( getApplicationContext() ))
-                .setContentTitle( "Nouvelle article" )
-                .setContentText( "HEY" )
-                .setSmallIcon( R.mipmap.ic_launcher )
-                .build();
-        NotificationManager notificationManager = (NotificationManager)getSystemService( NOTIFICATION_SERVICE );
-        notificationManager.notify( 1, notification );
+
 
         // final View controlsView =
         // findViewById(R.id.fullscreen_content_controls);
@@ -164,4 +169,6 @@ public class MainActivity extends Activity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
 }
